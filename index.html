@@ -1,0 +1,2101 @@
+﻿<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RIA COS | Official Site</title>
+    <style>
+      :root {
+        --bg: #fffafd;
+        --white: #ffffff;
+        --pink: #f472b6;
+        --pink-dark: #ec4899;
+        --violet: #7c3aed;
+        --sky: #38bdf8;
+        --text: #334155;
+        --muted: #64748b;
+        --line: #fbcfe8;
+        --shadow: 0 20px 48px rgba(236, 72, 153, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(251, 207, 232, 0.5), transparent 18%),
+          radial-gradient(circle at 88% 12%, rgba(221, 214, 254, 0.6), transparent 20%),
+          var(--bg);
+        color: var(--text);
+        font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 18% 0%, rgba(250, 204, 21, 0.16), transparent 18%),
+          radial-gradient(circle at 72% 0%, rgba(244, 114, 182, 0.13), transparent 18%),
+          rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      .header-inner {
+        display: flex;
+        min-height: 70px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .logo {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px 8px;
+        min-width: 178px;
+        color: #8b5cf6;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 27px;
+        letter-spacing: 0.2em;
+        line-height: 1.1;
+        text-align: center;
+        text-indent: 0.2em;
+        text-shadow: 0 8px 22px rgba(139, 92, 246, 0.18);
+      }
+
+      .logo::before {
+        content: none;
+      }
+
+      .logo::after {
+        content: "";
+        position: absolute;
+        right: 18px;
+        bottom: 4px;
+        left: 18px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(244, 114, 182, 0.55), transparent);
+      }
+
+      .nav {
+        display: flex;
+        gap: 26px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+      }
+
+      .nav a {
+        position: relative;
+        padding: 27px 0 24px;
+      }
+
+      .nav a:first-child {
+        color: var(--pink-dark);
+      }
+
+      .nav a:first-child::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        border-radius: 999px 999px 0 0;
+        background: linear-gradient(90deg, transparent, var(--pink), transparent);
+      }
+
+      .nav a:hover {
+        color: var(--pink-dark);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 999px;
+        background: var(--pink);
+        color: var(--white);
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 12px 18px;
+        box-shadow:
+          0 14px 28px rgba(244, 114, 182, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      }
+
+      .button::before {
+        content: "✉";
+        font-size: 13px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.9), transparent 18%),
+          radial-gradient(circle at 60% 70%, rgba(244, 114, 182, 0.14), transparent 26%),
+          linear-gradient(135deg, #fdf2f8, #ffffff 45%, #ede9fe);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
+          radial-gradient(circle at 78% 18%, rgba(250, 204, 21, 0.62) 0 2px, transparent 3px),
+          radial-gradient(circle at 86% 38%, rgba(244, 114, 182, 0.52) 0 1.5px, transparent 3px),
+          radial-gradient(circle at 70% 76%, rgba(167, 139, 250, 0.5) 0 2px, transparent 3px),
+          radial-gradient(circle at 48% 28%, rgba(255, 255, 255, 0.85) 0 1.5px, transparent 3px),
+          radial-gradient(circle at 92% 72%, rgba(250, 204, 21, 0.45) 0 2px, transparent 3px),
+          radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1px) 0 0 / 22px 22px;
+        opacity: 0.72;
+        pointer-events: none;
+      }
+
+      .hero-sparkles {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .sparkle {
+        position: absolute;
+        color: rgba(250, 204, 21, 0.86);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 22px;
+        text-shadow:
+          0 0 12px rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(244, 114, 182, 0.34);
+      }
+
+      .sparkle.pink {
+        color: rgba(244, 114, 182, 0.72);
+      }
+
+      .sparkle.violet {
+        color: rgba(167, 139, 250, 0.72);
+      }
+
+      .sparkle-1 {
+        display: none !important;
+      }
+
+      .sparkle-2 {
+        display: none !important;
+      }
+
+      .sparkle-3 {
+        right: 33%;
+        top: 18%;
+        font-size: 30px;
+      }
+
+      .sparkle-4 {
+        right: 8%;
+        top: 26%;
+      }
+
+      .sparkle-5 {
+        right: 16%;
+        bottom: 18%;
+        font-size: 26px;
+      }
+
+      .sparkle-6 {
+        left: 34%;
+        top: 49%;
+        bottom: auto;
+        font-size: 20px;
+      }
+
+      .sparkle-7 {
+        right: 18%;
+        top: 78%;
+        font-size: 18px;
+      }
+
+      .hero-layout {
+        position: relative;
+        z-index: 1;
+        display: block;
+        height: clamp(700px, 82vh, 860px);
+        min-height: 660px;
+      }
+
+      .hero-photo-panel {
+        position: relative;
+        width: 62%;
+        height: 100%;
+        min-height: 660px;
+        background:
+          linear-gradient(90deg, rgba(255, 250, 253, 0.08), rgba(255, 250, 253, 0.52)),
+          url("images/hero.jpg") 42% 48% / cover no-repeat;
+      }
+
+      .hero-photo-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0) 62%, rgba(255, 250, 253, 0.9) 100%),
+          radial-gradient(circle at 14% 20%, rgba(255, 255, 255, 0.42), transparent 18%);
+      }
+
+      .vertical-copy {
+        position: absolute;
+        z-index: 1;
+        left: 64px;
+        top: 96px;
+        writing-mode: vertical-rl;
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(244, 114, 182, 0.78), rgba(168, 85, 247, 0.52));
+        color: white;
+        font-family: "Yu Mincho", "Hiragino Mincho ProN", "Yu Gothic", serif;
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        line-height: 1.8;
+        padding: 28px 16px;
+        text-shadow:
+          0 2px 10px rgba(124, 58, 237, 0.28),
+          0 0 16px rgba(255, 255, 255, 0.72);
+        box-shadow:
+          0 18px 42px rgba(236, 72, 153, 0.22),
+          inset 0 0 26px rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      .hero-content {
+        position: absolute;
+        inset: 0 0 0 auto;
+        z-index: 3;
+        display: grid;
+        place-items: center;
+        width: 38%;
+        height: 100%;
+        min-height: 660px;
+        padding: 64px 40px;
+      }
+
+      .hero-text {
+        width: 100%;
+        max-width: 620px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .name-frame {
+        position: relative;
+        display: inline-block;
+        padding: 0 56px 18px;
+      }
+
+      .name-frame::before,
+      .name-frame::after {
+        content: "✦";
+        position: absolute;
+        top: 28%;
+        color: rgba(250, 204, 21, 0.86);
+        font-size: 30px;
+        text-shadow: 0 0 16px rgba(255, 255, 255, 0.95);
+      }
+
+      .name-frame::before {
+        left: 8px;
+      }
+
+      .name-frame::after {
+        right: 8px;
+      }
+
+      .name-line {
+        display: block;
+        margin: 6px auto 0;
+        color: rgba(244, 114, 182, 0.58);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        white-space: nowrap;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.95);
+      }
+
+      .eyebrow {
+        position: relative;
+        display: inline-block;
+        color: #fff7fb;
+        -webkit-text-fill-color: #fff7fb;
+        -webkit-text-stroke: 0.65px rgba(236, 72, 153, 0.5);
+        paint-order: stroke fill;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 27px;
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        margin: 0 0 8px;
+        text-shadow:
+          1.1px 0 rgba(219, 39, 119, 0.32),
+          -1.1px 0 rgba(219, 39, 119, 0.32),
+          0 1.1px rgba(219, 39, 119, 0.32),
+          0 -1.1px rgba(219, 39, 119, 0.32),
+          0 0 10px rgba(255, 255, 255, 0.95),
+          0 0 18px rgba(244, 114, 182, 0.34);
+        filter:
+          drop-shadow(0 0 3px rgba(219, 39, 119, 0.14))
+          drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+      }
+
+      .eyebrow::before,
+      .eyebrow::after {
+        content: "✧";
+        position: absolute;
+        top: 50%;
+        color: rgba(250, 204, 21, 0.68);
+        font-size: 18px;
+        transform: translateY(-50%);
+      }
+
+      .eyebrow::before {
+        left: -34px;
+      }
+
+      .eyebrow::after {
+        right: -34px;
+      }
+
+      h1 {
+        color: var(--violet);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(50px, 6vw, 82px);
+        letter-spacing: 0.14em;
+        margin: 0 auto;
+        text-shadow: 0 12px 34px rgba(124, 58, 237, 0.12);
+      }
+
+      .tagline {
+        position: relative;
+        display: inline-block;
+        color: #fff7fb;
+        -webkit-text-fill-color: #fff7fb;
+        -webkit-text-stroke: 0.65px rgba(236, 72, 153, 0.5);
+        paint-order: stroke fill;
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        margin: 22px 0 24px;
+        padding: 0 34px;
+        text-shadow:
+          1.1px 0 rgba(219, 39, 119, 0.32),
+          -1.1px 0 rgba(219, 39, 119, 0.32),
+          0 1.1px rgba(219, 39, 119, 0.32),
+          0 -1.1px rgba(219, 39, 119, 0.32),
+          0 0 10px rgba(255, 255, 255, 0.95),
+          0 0 18px rgba(244, 114, 182, 0.34);
+        filter:
+          drop-shadow(0 0 3px rgba(219, 39, 119, 0.14))
+          drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+      }
+
+      .tagline::before,
+      .tagline::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 24px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(244, 114, 182, 0.62));
+      }
+
+      .tagline::before {
+        left: 0;
+      }
+
+      .tagline::after {
+        right: 0;
+        transform: rotate(180deg);
+      }
+
+      .lead {
+        color: #334155;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 2.15;
+        margin: 0 auto;
+        max-width: 590px;
+        text-align: left;
+        letter-spacing: 0.04em;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.75);
+      }
+
+      .hero-facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 28px auto 0;
+        max-width: 480px;
+        border: 1px solid rgba(244, 114, 182, 0.32);
+        border-radius: 14px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(253, 242, 248, 0.78));
+        padding: 14px;
+        box-shadow:
+          0 16px 38px rgba(124, 58, 237, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(10px);
+      }
+
+      .hero-facts span {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #8b5cf6;
+        font-size: 14px;
+        font-weight: 800;
+        text-align: center;
+        letter-spacing: 0.04em;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.95),
+          0 0 12px rgba(255, 255, 255, 0.72);
+      }
+
+      .hero-facts span::before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        flex: 0 0 15px;
+        background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21s6.2-5.3 6.2-11.1A6.2 6.2 0 0 0 5.8 9.9C5.8 15.7 12 21 12 21Z' stroke='%23ec4899' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='9.9' r='2.1' stroke='%23ec4899' stroke-width='2.4'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter:
+          drop-shadow(0 0 5px rgba(255, 255, 255, 0.95))
+          drop-shadow(0 0 8px rgba(244, 114, 182, 0.35));
+      }
+
+      .hero-facts span:first-child::before {
+        content: "♕";
+        width: auto;
+        height: auto;
+        flex: 0 0 auto;
+        background-image: none;
+        color: rgba(236, 72, 153, 0.82);
+        font-size: 16px;
+        line-height: 1;
+        filter: none;
+        text-shadow:
+          0 0 10px rgba(255, 255, 255, 0.95),
+          0 0 16px rgba(244, 114, 182, 0.4);
+      }
+
+      .hero-facts span:nth-child(2)::before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        flex: 0 0 15px;
+        background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21s6.2-5.3 6.2-11.1A6.2 6.2 0 0 0 5.8 9.9C5.8 15.7 12 21 12 21Z' stroke='%23ec4899' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='9.9' r='2.1' stroke='%23ec4899' stroke-width='2.4'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter:
+          drop-shadow(0 0 5px rgba(255, 255, 255, 0.95))
+          drop-shadow(0 0 8px rgba(244, 114, 182, 0.35));
+      }
+
+      .hero-ribbon {
+        position: absolute;
+        right: 28px;
+        top: 32px;
+        color: rgba(244, 114, 182, 0.5);
+        font-size: 54px;
+        line-height: 1;
+        transform: rotate(12deg);
+        text-shadow: 0 12px 28px rgba(236, 72, 153, 0.16);
+      }
+
+      .hero-corner-ribbon {
+        position: absolute;
+        right: 28px;
+        bottom: 26px;
+        z-index: 2;
+        color: rgba(244, 114, 182, 0.6);
+        font-size: 58px;
+        line-height: 1;
+        transform: rotate(-10deg);
+        text-shadow: 0 10px 26px rgba(236, 72, 153, 0.18);
+      }
+
+      section:not(.hero) {
+        padding: 70px 0;
+      }
+
+      #home.hero {
+        padding: 0 !important;
+      }
+
+      .section-title {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 32px;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        background: linear-gradient(90deg, transparent, var(--line));
+        content: "";
+        height: 1px;
+        width: 56px;
+      }
+
+      .section-title::after {
+        background: linear-gradient(90deg, var(--line), transparent);
+      }
+
+      .section-title h2 {
+        color: var(--violet);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 28px;
+        letter-spacing: 0.14em;
+        margin: 0;
+      }
+
+      .profile-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 44px;
+        align-items: start;
+      }
+
+      .profile-list {
+        margin: 0;
+      }
+
+      .profile-list div {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        color: #334155;
+        font-size: 16px;
+        font-weight: 700;
+        gap: 16px;
+        grid-template-columns: 120px 1fr;
+        letter-spacing: 0.04em;
+        line-height: 2.15;
+        padding: 10px 0;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.75);
+      }
+
+      dt {
+        color: #8b5cf6;
+        font-weight: 800;
+      }
+
+      dd {
+        color: #334155;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .message-card,
+      .post-card,
+      .event-card,
+      .contact-card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: var(--shadow);
+      }
+
+      .message-card {
+        padding: 28px;
+      }
+
+      .support-column {
+        align-self: start;
+        display: grid;
+        gap: 24px;
+        margin-top: 0;
+      }
+
+      .support-column .section-title {
+        margin-bottom: 0;
+      }
+
+      .profile-side-block {
+        display: grid;
+        gap: 28px;
+      }
+
+      .support-funclub-section .container {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .support-funclub-block {
+        display: grid;
+        gap: 18px;
+      }
+
+      .support-links {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .support-links .sns-link {
+        min-height: 96px;
+        padding: 20px;
+      }
+
+      .support-section .support-links {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 auto;
+        max-width: 520px;
+      }
+
+      #funclub .support-links {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 auto;
+        max-width: 520px;
+      }
+
+      #sns .support-links {
+        grid-template-columns: repeat(2, 150px) !important;
+        justify-content: center !important;
+        justify-items: stretch !important;
+      }
+
+      #sns .support-links .sns-link {
+        align-content: center !important;
+        box-sizing: border-box !important;
+        height: 150px !important;
+        min-height: 150px !important;
+        padding: 18px !important;
+        width: 150px !important;
+      }
+
+      .message-card h3 {
+        color: var(--violet);
+        font-size: 22px;
+        margin: 0 0 14px;
+      }
+
+      .message-card p {
+        color: #334155;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 2.15;
+        margin: 0;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.75);
+      }
+
+      .band {
+        border-bottom: 1px solid var(--line);
+        border-top: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.66);
+      }
+
+      .gallery-lead {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.9;
+        margin: -14px auto 28px;
+        max-width: 680px;
+        text-align: center;
+      }
+
+      .gallery-page[hidden] {
+        display: none;
+      }
+
+      .gallery-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+      }
+
+      .post-card {
+        height: fit-content;
+        min-width: 0;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .post-card:hover {
+        box-shadow: 0 24px 56px rgba(236, 72, 153, 0.22);
+        transform: translateY(-4px);
+      }
+
+      .post-image {
+        aspect-ratio: 4 / 5;
+        background:
+          radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.76), transparent 22%),
+          linear-gradient(140deg, rgba(244, 114, 182, 0.34), rgba(167, 139, 250, 0.28));
+        color: var(--violet);
+        display: grid;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        place-items: center;
+        text-align: center;
+      }
+
+      .post-image.sky {
+        background:
+          radial-gradient(circle at 70% 22%, rgba(255, 255, 255, 0.76), transparent 20%),
+          linear-gradient(140deg, rgba(56, 189, 248, 0.28), rgba(244, 114, 182, 0.28));
+      }
+
+      .post-image.violet {
+        background:
+          radial-gradient(circle at 30% 78%, rgba(255, 255, 255, 0.72), transparent 22%),
+          linear-gradient(140deg, rgba(167, 139, 250, 0.34), rgba(250, 204, 21, 0.18));
+      }
+
+      .post-embed {
+        background: var(--white);
+        line-height: 0;
+        min-width: 0;
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .post-embed .twitter-tweet,
+      .post-embed iframe {
+        display: block !important;
+        margin: 0 auto !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        width: 100% !important;
+      }
+
+      .gallery-pager {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 28px;
+      }
+
+      .pager-link,
+      .pager-current {
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        box-shadow: 0 12px 24px rgba(236, 72, 153, 0.12);
+        cursor: pointer;
+        display: inline-flex;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        height: 42px;
+        justify-content: center;
+        min-width: 42px;
+        padding: 0 16px;
+      }
+
+      .pager-link {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--violet);
+      }
+
+      .pager-current,
+      .pager-link:hover {
+        background: var(--pink);
+        color: var(--white);
+      }
+
+      .events-grid,
+      .sns-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .sns-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .schedule-board {
+        margin: 0 auto;
+        max-width: 1080px;
+        text-align: center;
+      }
+
+      .schedule-intro {
+        color: #334155;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 2.05;
+        margin: -10px auto 24px;
+        max-width: 720px;
+        text-align: center;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.75);
+      }
+
+      .schedule-calendar {
+        border: 1px solid rgba(244, 114, 182, 0.34);
+        border-radius: 22px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(253, 242, 248, 0.82));
+        box-shadow:
+          0 22px 55px rgba(236, 72, 153, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 18px;
+      }
+
+      .schedule-calendar iframe {
+        border: 0;
+        border-radius: 14px;
+        display: block;
+        height: 930px;
+        min-height: 930px;
+        width: 100%;
+      }
+
+      .schedule-placeholder {
+        align-items: center;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(244, 114, 182, 0.18), transparent 26%),
+          radial-gradient(circle at 80% 18%, rgba(167, 139, 250, 0.18), transparent 24%),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.86));
+        border: 1px dashed rgba(244, 114, 182, 0.5);
+        border-radius: 14px;
+        color: #334155;
+        display: grid;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        line-height: 2;
+        min-height: 520px;
+        padding: 28px;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.75);
+      }
+
+      .schedule-note {
+        color: #334155;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 2.15;
+        margin: 22px auto 0;
+        max-width: 720px;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.75);
+      }
+
+      .schedule-button {
+        align-items: center;
+        background: linear-gradient(135deg, #f472b6, #a78bfa);
+        border-radius: 999px;
+        box-shadow: 0 16px 30px rgba(236, 72, 153, 0.24);
+        color: var(--white);
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 900;
+        justify-content: center;
+        letter-spacing: 0.08em;
+        margin-top: 18px;
+        min-width: 220px;
+        padding: 14px 28px;
+      }
+
+      .schedule-events-title {
+        color: var(--violet);
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        margin: 34px 0 16px;
+        text-align: center;
+      }
+
+      .event-card {
+        padding: 18px;
+      }
+
+      .event-card h3 {
+        font-size: 14px;
+        margin: 0 0 8px;
+      }
+
+      .event-card h3 a {
+        color: #2563eb !important;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .event-card h3 a:hover {
+        color: #1d4ed8 !important;
+      }
+
+      .event-card p {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 5px 0;
+      }
+
+      .date {
+        border-radius: 14px;
+        color: var(--white);
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 900;
+        margin-bottom: 12px;
+        padding: 10px 12px;
+      }
+
+      .date.pink {
+        background: var(--pink);
+      }
+
+      .date.purple {
+        background: #a78bfa;
+      }
+
+      .date.sky {
+        background: var(--sky);
+      }
+
+      .sns-link {
+        border-radius: 18px;
+        color: var(--white);
+        display: grid;
+        font-weight: 800;
+        gap: 6px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .sns-icon {
+        display: block;
+        height: 30px;
+        margin-bottom: 4px;
+        object-fit: contain;
+        width: 30px;
+      }
+
+      .sns-link span {
+        display: block;
+        font-size: 12px;
+        margin-top: 6px;
+        opacity: 0.82;
+      }
+
+      .x,
+      .tiktok {
+        background: #020617;
+      }
+
+      .instagram {
+        background: linear-gradient(100deg, #d946ef, #ec4899 54%, #fb923c);
+      }
+
+      .youtube {
+        background: #ef4444;
+      }
+
+      .gipt {
+        background: linear-gradient(135deg, #f472b6, #8b5cf6);
+      }
+
+      .amazon {
+        background: linear-gradient(135deg, #f59e0b, #f97316);
+      }
+
+      .fantia {
+        background: #ffffff;
+        color: #ec4899;
+      }
+
+      .fanbox {
+        background: linear-gradient(135deg, #38bdf8, #2563eb);
+      }
+
+      .likey {
+        background: #202020;
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 28px;
+        grid-template-columns: 1fr 320px 1fr;
+        align-items: center;
+      }
+
+      .contact-card {
+        color: #1e293b;
+        display: grid;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.85;
+        padding: 22px;
+      }
+
+      .contact-card div {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(244, 114, 182, 0.2);
+        border-radius: 14px;
+        padding: 12px 14px;
+      }
+
+      .contact-card strong {
+        color: #ec4899;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        margin-right: 4px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95);
+      }
+
+      .contact-card a {
+        color: #1e293b;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .contact-actions {
+        display: grid;
+        gap: 14px;
+      }
+
+      .contact-action {
+        border-radius: 18px;
+        color: var(--white);
+        display: block;
+        font-weight: 900;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .mail {
+        background: linear-gradient(90deg, var(--pink), var(--pink-dark));
+      }
+
+      .dm {
+        background: #020617;
+      }
+
+      footer {
+        background: linear-gradient(90deg, #8b5cf6, #a78bfa, #8b5cf6);
+        color: var(--white);
+        padding: 28px 0;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        font-size: 12px;
+      }
+
+      @media (max-width: 980px) {
+        .nav {
+          display: none;
+        }
+
+        .hero-layout {
+          display: block;
+          height: auto;
+        }
+
+        .hero-photo-panel {
+          width: 100%;
+          min-height: 720px !important;
+          background:
+            linear-gradient(180deg, rgba(255, 250, 253, 0.04), rgba(255, 250, 253, 0.4)),
+            url("images/hero.jpg") 42% 48% / cover no-repeat;
+        }
+
+        .hero-content {
+          position: relative;
+          inset: auto;
+          width: 100%;
+          min-height: auto;
+          padding: 48px 28px 56px;
+        }
+
+        .profile-grid,
+        .support-funclub-section .container,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .support-column {
+          margin-top: 0;
+        }
+
+        .gallery-grid,
+        .events-grid,
+        .sns-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .support-section .support-links {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .schedule-calendar iframe {
+          height: 860px;
+          min-height: 860px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .hero-photo-panel {
+          min-height: 560px !important;
+          background:
+            linear-gradient(180deg, rgba(255, 250, 253, 0.04), rgba(255, 250, 253, 0.36)),
+            url("images/hero.jpg") 42% 48% / cover no-repeat;
+        }
+
+        .schedule-calendar {
+          padding: 10px;
+        }
+
+        .schedule-calendar iframe {
+          height: 720px;
+          min-height: 720px;
+        }
+
+        .support-section .support-links {
+          grid-template-columns: 1fr;
+        }
+
+        #sns .support-links {
+          grid-template-columns: 1fr;
+        }
+
+        .vertical-copy {
+          top: 28px;
+          left: 14px;
+          right: 14px;
+          writing-mode: horizontal-tb;
+          border-radius: 999px;
+          padding: 10px 14px;
+          font-size: 12px;
+          letter-spacing: 0.1em;
+          line-height: 1.6;
+          text-align: center;
+        }
+
+        .hero-text {
+          max-width: 100%;
+        }
+
+        h1 {
+          font-size: clamp(42px, 13vw, 58px);
+        }
+
+        .name-frame {
+          padding: 0 34px 14px;
+        }
+
+        .name-frame::before,
+        .name-frame::after {
+          font-size: 20px;
+        }
+
+        .hero-ribbon {
+          display: none;
+        }
+
+        .hero-corner-ribbon {
+          display: none;
+        }
+
+        .sparkle-3,
+        .sparkle-4,
+        .sparkle-5,
+        .sparkle-6,
+        .sparkle-7 {
+          display: none;
+        }
+
+        .lead {
+          font-size: 13px;
+        }
+
+        .hero-facts {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-grid,
+        .events-grid,
+        .sns-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+        }
+      }
+
+      #gallery .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+      }
+
+      #gallery .post-card,
+      #gallery .post-embed {
+        height: auto !important;
+        min-height: 0 !important;
+        min-width: 0 !important;
+        width: 100% !important;
+      }
+
+      #gallery .twitter-tweet,
+      #gallery iframe {
+        max-width: 100% !important;
+        min-width: 0 !important;
+        width: 100% !important;
+      }
+
+      @media (max-width: 760px) {
+        #gallery .gallery-grid {
+          grid-template-columns: 1fr !important;
+        }
+
+        #gallery .post-card {
+          background: transparent !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          overflow: visible !important;
+        }
+
+        #gallery .post-card:hover {
+          box-shadow: none !important;
+          transform: none !important;
+        }
+
+        #gallery .post-embed {
+          background: transparent !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+          overflow: visible !important;
+        }
+
+        #gallery .twitter-tweet,
+        #gallery iframe {
+          border-radius: 14px !important;
+        }
+      }
+
+      #home .hero-layout {
+        height: clamp(700px, 82vh, 860px) !important;
+        min-height: 700px !important;
+      }
+
+      #home .hero-photo-panel,
+      #home .hero-content {
+        height: 100% !important;
+        min-height: 700px !important;
+      }
+
+      @media (max-width: 980px) {
+        #home .hero-layout {
+          height: auto !important;
+          min-height: 0 !important;
+        }
+
+        #home .hero-photo-panel {
+          height: auto !important;
+          min-height: 720px !important;
+        }
+
+        #home .hero-content {
+          height: auto !important;
+          min-height: auto !important;
+        }
+      }
+
+      #home .vertical-copy {
+        left: 64px !important;
+        top: 96px !important;
+        writing-mode: vertical-rl !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        color: #fff7fb !important;
+        -webkit-text-fill-color: #fff7fb !important;
+        font-family: "Yu Mincho", "Hiragino Mincho ProN", "Yu Gothic", serif !important;
+        font-size: 32px !important;
+        font-weight: 800 !important;
+        -webkit-text-stroke: 0.85px rgba(236, 72, 153, 0.52) !important;
+        paint-order: stroke fill !important;
+        letter-spacing: 0.2em !important;
+        line-height: 1.65 !important;
+        padding: 0 !important;
+        text-shadow:
+          1.2px 0 rgba(219, 39, 119, 0.38),
+          -1.2px 0 rgba(219, 39, 119, 0.38),
+          0 1.2px rgba(219, 39, 119, 0.38),
+          0 -1.2px rgba(219, 39, 119, 0.38),
+          0.8px 0.8px rgba(219, 39, 119, 0.28),
+          -0.8px 0.8px rgba(219, 39, 119, 0.28),
+          0.8px -0.8px rgba(219, 39, 119, 0.28),
+          -0.8px -0.8px rgba(219, 39, 119, 0.28),
+          0 2px 6px rgba(190, 24, 93, 0.26),
+          0 0 12px rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(244, 114, 182, 0.38) !important;
+        filter:
+          drop-shadow(0 0 3px rgba(219, 39, 119, 0.18))
+          drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+      }
+
+      #home .vertical-copy::before {
+        content: none !important;
+      }
+
+      #home .hero-text .eyebrow {
+        color: #fff7fb !important;
+        -webkit-text-fill-color: #fff7fb !important;
+        -webkit-text-stroke: 0.85px rgba(236, 72, 153, 0.52) !important;
+        paint-order: stroke fill !important;
+        font-family: Georgia, "Times New Roman", serif !important;
+        font-size: 28px !important;
+        font-style: italic !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+        text-shadow:
+          1.2px 0 rgba(219, 39, 119, 0.38),
+          -1.2px 0 rgba(219, 39, 119, 0.38),
+          0 1.2px rgba(219, 39, 119, 0.38),
+          0 -1.2px rgba(219, 39, 119, 0.38),
+          0 0 12px rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(244, 114, 182, 0.38) !important;
+        filter:
+          drop-shadow(0 0 3px rgba(219, 39, 119, 0.18))
+          drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) !important;
+      }
+
+      #home h1 {
+        color: #7c3aed !important;
+        -webkit-text-fill-color: #7c3aed !important;
+        -webkit-text-stroke: 0.8px rgba(255, 255, 255, 0.92) !important;
+        paint-order: stroke fill !important;
+        text-shadow:
+          0 8px 22px rgba(124, 58, 237, 0.18),
+          0 0 14px rgba(255, 255, 255, 0.95),
+          0 0 24px rgba(244, 114, 182, 0.22) !important;
+        filter:
+          drop-shadow(0 0 8px rgba(255, 255, 255, 0.62)) !important;
+      }
+
+      @media (max-width: 640px) {
+        #home .vertical-copy {
+          top: 28px !important;
+          left: 14px !important;
+          right: 14px !important;
+          writing-mode: horizontal-tb !important;
+          font-size: 14px !important;
+          line-height: 1.7 !important;
+          text-align: center !important;
+        }
+
+      }
+
+      #schedule .event-card h3 a,
+      #schedule .event-card h3 a:visited {
+        color: #2563eb !important;
+        text-decoration: none !important;
+      }
+
+      #schedule .event-card h3 a:hover {
+        color: #1d4ed8 !important;
+        text-decoration: underline !important;
+      }
+
+      #profile .message-card p {
+        color: #334155 !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+        line-height: 2.15 !important;
+        margin: 0 !important;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.9),
+          0 0 14px rgba(255, 255, 255, 0.75) !important;
+      }
+
+      #profile #sns .support-links {
+        grid-template-columns: repeat(2, 170px) !important;
+        justify-content: center !important;
+        justify-items: stretch !important;
+      }
+
+      #profile #sns .support-links .sns-link {
+        align-content: center !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+        display: grid !important;
+        gap: 18px !important;
+        height: 170px !important;
+        justify-items: center !important;
+        min-height: 170px !important;
+        padding: 26px 18px 18px !important;
+        text-align: center !important;
+        width: 170px !important;
+      }
+
+      #profile #sns .sns-icon {
+        display: block !important;
+        height: 38px !important;
+        margin: 0 !important;
+        object-fit: contain !important;
+        position: static !important;
+        transform: none !important;
+        width: 38px !important;
+      }
+
+      #profile #sns .instagram .sns-icon,
+      #profile #sns .tiktok .sns-icon,
+      #profile #sns .youtube .sns-icon {
+        height: 48px !important;
+        width: 48px !important;
+      }
+
+      #profile #sns .sns-link span,
+      #profile #sns .sns-id {
+        font-size: 12px !important;
+        line-height: 1.35 !important;
+        margin-top: 8px !important;
+        max-width: 120px !important;
+        overflow-wrap: anywhere !important;
+        position: static !important;
+      }
+
+      #funclub .support-links {
+        grid-template-columns: repeat(3, 150px) !important;
+        justify-content: center !important;
+        justify-items: stretch !important;
+      }
+
+      #support .support-links {
+        grid-template-columns: repeat(2, 150px) !important;
+        justify-content: center !important;
+        justify-items: stretch !important;
+      }
+
+      #funclub .support-links .sns-link,
+      #support .support-links .sns-link {
+        align-items: center !important;
+        background-clip: padding-box !important;
+        box-sizing: border-box !important;
+        gap: 16px !important;
+        height: 150px !important;
+        justify-items: center !important;
+        min-height: 150px !important;
+        padding: 0 !important;
+        position: relative !important;
+        text-align: center !important;
+        width: 150px !important;
+      }
+
+      #funclub .fantia {
+        background: #ffffff !important;
+        color: #ec4899 !important;
+      }
+
+      #funclub .likey {
+        background: #202020 !important;
+      }
+
+      #funclub .sns-icon,
+      #support .sns-icon {
+        height: 120px !important;
+        left: 50% !important;
+        margin: 0 !important;
+        position: absolute !important;
+        top: 43% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 120px !important;
+      }
+
+      #support .amazon .sns-icon {
+        top: 51% !important;
+      }
+
+      #funclub .fantia .sns-icon,
+      #funclub .fanbox .sns-icon,
+      #funclub .likey .sns-icon,
+      #support .gipt .sns-icon {
+        top: 49% !important;
+      }
+
+      #funclub .fantia .sns-icon {
+        filter:
+          drop-shadow(0 0 3px rgba(236, 72, 153, 0.55))
+          drop-shadow(0 10px 18px rgba(236, 72, 153, 0.18)) !important;
+      }
+
+      #funclub .sns-link span,
+      #support .sns-link span {
+        background: rgba(255, 255, 255, 0.96) !important;
+        border: 1px solid rgba(236, 72, 153, 0.18) !important;
+        border-radius: 999px !important;
+        bottom: 10px !important;
+        box-shadow:
+          0 8px 18px rgba(15, 23, 42, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+        color: #334155 !important;
+        display: block !important;
+        font-size: 12px !important;
+        font-weight: 900 !important;
+        left: 8px !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.35 !important;
+        margin-top: 0 !important;
+        padding: 5px 8px !important;
+        position: absolute !important;
+        right: 8px !important;
+        text-align: center !important;
+        text-shadow: none !important;
+        -webkit-text-fill-color: #334155 !important;
+        z-index: 2 !important;
+      }
+
+      #funclub .fantia span,
+      #funclub .fanbox span,
+      #funclub .likey span,
+      #support .gipt span,
+      #support .amazon span {
+        color: #334155 !important;
+        -webkit-text-fill-color: #334155 !important;
+      }
+
+      @media (max-width: 640px) {
+        html,
+        body {
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+
+        .container {
+          width: min(100% - 28px, 1180px) !important;
+        }
+
+        #home .hero-content {
+          overflow: hidden !important;
+          padding: 42px 18px 54px !important;
+          width: 100% !important;
+        }
+
+        #home .hero-text {
+          max-width: 100% !important;
+          overflow: hidden !important;
+        }
+
+        #home .hero-text .eyebrow {
+          font-size: clamp(22px, 7vw, 27px) !important;
+          max-width: 100% !important;
+        }
+
+        #home h1 {
+          font-size: clamp(42px, 17vw, 62px) !important;
+          letter-spacing: 0.08em !important;
+          text-indent: 0.08em !important;
+          white-space: nowrap !important;
+        }
+
+        #home .name-frame {
+          display: block !important;
+          max-width: 100% !important;
+          overflow: hidden !important;
+          padding: 0 10px 14px !important;
+        }
+
+        #home .name-frame::before,
+        #home .name-frame::after {
+          display: none !important;
+        }
+
+        #home .name-line {
+          font-size: 15px !important;
+          max-width: 100% !important;
+          overflow: hidden !important;
+          white-space: nowrap !important;
+        }
+
+        #home .tagline {
+          display: block !important;
+          font-size: clamp(18px, 5.4vw, 23px) !important;
+          line-height: 1.6 !important;
+          margin: 20px auto 24px !important;
+          max-width: 100% !important;
+          padding: 0 8px !important;
+          white-space: normal !important;
+        }
+
+        #home .tagline::before,
+        #home .tagline::after {
+          display: none !important;
+        }
+
+        #home .lead {
+          font-size: 14px !important;
+          line-height: 2 !important;
+          max-width: 100% !important;
+          overflow-wrap: anywhere !important;
+          text-align: left !important;
+        }
+
+        #home .hero-facts {
+          box-sizing: border-box !important;
+          grid-template-columns: 1fr !important;
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+
+        #profile #sns .support-links {
+          gap: 14px !important;
+          grid-template-columns: repeat(2, minmax(0, 150px)) !important;
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+
+        #profile #sns .support-links .sns-link {
+          height: 150px !important;
+          min-height: 150px !important;
+          width: 100% !important;
+        }
+
+        .support-funclub-section {
+          overflow: hidden !important;
+        }
+
+        #funclub .support-links,
+        #support .support-links {
+          gap: 14px !important;
+          grid-template-columns: repeat(2, minmax(0, 150px)) !important;
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+
+        #funclub .support-links .sns-link,
+        #support .support-links .sns-link {
+          height: 150px !important;
+          min-height: 150px !important;
+          width: 100% !important;
+        }
+
+        #gallery .gallery-pager {
+          display: flex !important;
+          flex-wrap: wrap !important;
+          gap: 10px !important;
+          justify-content: center !important;
+          margin-right: auto !important;
+          margin-left: auto !important;
+          max-width: 330px !important;
+          overflow: visible !important;
+          padding: 0 6px !important;
+          width: 100% !important;
+        }
+
+        #gallery .pager-link,
+        #gallery .pager-current {
+          flex: 0 0 42px !important;
+          height: 42px !important;
+          min-width: 42px !important;
+          padding: 0 !important;
+        }
+
+        #gallery [data-gallery-next] {
+          flex-basis: 96px !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <a class="logo" href="#home">RIA COS</a>
+        <nav class="nav">
+          <a href="#home">HOME</a>
+          <a href="#profile">PROFILE</a>
+          <a href="#sns">SNS</a>
+          <a href="#support">SUPPORT</a>
+          <a href="#funclub">FUNCLUB</a>
+          <a href="#schedule">SCHEDULE</a>
+          <a href="#gallery">GALLERY</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+        <a class="button" href="#contact">お問い合わせ</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-sparkles" aria-hidden="true">
+          <span class="sparkle sparkle-3">✦</span>
+          <span class="sparkle sparkle-4 violet">✧</span>
+          <span class="sparkle sparkle-5 pink">✦</span>
+          <span class="sparkle sparkle-6">✧</span>
+          <span class="sparkle sparkle-7 pink">✦</span>
+        </div>
+        <div class="hero-layout">
+          <div class="hero-photo-panel">
+            <div class="vertical-copy">あなたに響く<br />そんなコスプレイヤーでありたい。</div>
+          </div>
+          <div class="hero-content">
+            <div class="hero-text">
+              <div class="hero-ribbon" aria-hidden="true">♡</div>
+              <p class="eyebrow">Tsukishiro Ria</p>
+              <div class="name-frame">
+                <h1>月城りあ</h1>
+                <span class="name-line" aria-hidden="true">○──────────────⊂◇⊃──────────────○</span>
+              </div>
+              <p class="tagline">世界観を大切に</p>
+              <p class="lead">
+                はじめまして、月城りあです。Vtuber、アニメ、ゲーム、フェチが大好きなコスプレイヤーです。
+                ウィッグづくりから撮影まで心を込めて活動しています。
+              </p>
+              <div class="hero-facts">
+                <span>活動歴 1年目</span>
+                <span>関西と関東を中心に活動中</span>
+              </div>
+              <div class="hero-corner-ribbon" aria-hidden="true">♡</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profile">
+        <div class="container profile-grid">
+          <div>
+            <div class="section-title"><h2>PROFILE</h2></div>
+            <dl class="profile-list">
+              <div><dt>活動開始</dt><dd>2025年08月01日 本格的に活動スタート</dd></div>
+              <div><dt>活動エリア</dt><dd>関西、関東を中心に活動中（九州や名古屋も時々）</dd></div>
+              <div><dt>好きなジャンル</dt><dd>Vtuber / アニメ / ゲーム / 創作 / フェチ</dd></div>
+              <div><dt>身長</dt><dd>153cm</dd></div>
+              <div><dt>撮影依頼</dt><dd>お気軽にご相談ください</dd></div>
+              <div><dt>更新中のSNS</dt><dd>X / Instagram / TikTok</dd></div>
+            </dl>
+          </div>
+          <div class="support-column">
+            <div id="sns" class="profile-side-block">
+              <div class="section-title"><h2>SNS</h2></div>
+              <div class="support-links">
+                <a class="sns-link x" href="https://x.com/riariaria_cos" target="_blank" rel="noreferrer"><img class="sns-icon" src="images/icons/x.svg" alt="" /><span class="sns-id">@riariaria_cos</span></a>
+                <a class="sns-link instagram" href="https://www.instagram.com/riariaria.cos/" target="_blank" rel="noreferrer"><img class="sns-icon sns-icon-large" src="images/icons/instagram.svg" alt="" width="58" height="58" style="width: 58px; height: 58px;" /><span class="sns-id">@riariaria.cos</span></a>
+                <a class="sns-link tiktok" href="https://www.tiktok.com/@riariaria.cos" target="_blank" rel="noreferrer"><img class="sns-icon sns-icon-large" src="images/icons/tiktok.svg" alt="" width="58" height="58" style="width: 58px; height: 58px;" /><span class="sns-id">@riariaria.cos</span></a>
+                <a class="sns-link youtube" href="https://www.youtube.com/@riaria.ria_official" target="_blank" rel="noreferrer"><img class="sns-icon sns-icon-large" src="images/icons/youtube.svg" alt="" width="58" height="58" style="width: 58px; height: 58px;" /><span class="sns-id">riaria.ria_official</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band support-funclub-section">
+        <div class="container">
+          <div id="funclub" class="support-funclub-block">
+            <div class="section-title"><h2>FUN CLUB</h2></div>
+            <div class="support-links">
+              <a class="sns-link fantia" href="https://fantia.jp/fanclubs/546482/posts" target="_blank" rel="noreferrer"><img class="sns-icon" src="images/icons/fantia.svg" alt="" /><span style="color: #334155 !important; -webkit-text-fill-color: #334155 !important;">ファンクラブ</span></a>
+              <a class="sns-link fanbox" href="https://riaria-cos.fanbox.cc/" target="_blank" rel="noreferrer"><img class="sns-icon" src="images/icons/fanbox.svg" alt="" /><span style="color: #334155 !important; -webkit-text-fill-color: #334155 !important;">ファンクラブ</span></a>
+              <a class="sns-link likey" href="https://linkpota.to/riariaria_cos" target="_blank" rel="noreferrer"><img class="sns-icon" src="images/icons/likey.svg" alt="" /><span style="color: #334155 !important; -webkit-text-fill-color: #334155 !important;">ファンクラブ</span></a>
+            </div>
+          </div>
+          <div id="support" class="support-funclub-block">
+            <div class="section-title"><h2>SUPPORT</h2></div>
+            <div class="support-links">
+              <a class="sns-link gipt" href="https://gi-pt.com/main/wishlist/fan-view/3a20b348-f629-8c1b-2f0c-60a5b6bd986a" target="_blank" rel="noreferrer"><img class="sns-icon" src="images/icons/gipt.svg" alt="" /><span style="color: #334155 !important; -webkit-text-fill-color: #334155 !important;">欲しいものリスト</span></a>
+              <a class="sns-link amazon" href="https://www.amazon.co.jp/hz/wishlist/ls/11GMBME63ELSB?ref_=wl_share" target="_blank" rel="noreferrer"><img class="sns-icon" src="images/icons/amazon.svg" alt="" style="top: 51% !important;" /><span style="color: #334155 !important; -webkit-text-fill-color: #334155 !important;">欲しいものリスト</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule">
+        <div class="container">
+          <div class="section-title"><h2>SCHEDULE</h2></div>
+          <p class="schedule-intro">
+            💛会える日 / 💗撮影会 / 💜ファンクラブ更新 / 💚配信
+          </p>
+          <div class="schedule-board">
+            <div class="schedule-calendar">
+              <iframe src="https://calendar.google.com/calendar/embed?src=riariaria.official%40gmail.com&ctz=Asia%2FTokyo" width="800" height="600" frameborder="0" scrolling="no" loading="lazy"></iframe>
+            </div>
+            <p class="schedule-note">
+              イベント参加予定や撮影会参加予定などをカレンダーでご確認いただけます。
+              掲載日以外の撮影のご相談も、お気軽にお問い合わせください。
+            </p>
+            <a class="schedule-button" href="#contact">お問い合わせへ</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="band">
+        <div class="container">
+          <div class="section-title"><h2>GALLERY</h2></div>
+          <p class="gallery-lead">
+          </p>
+
+          <div class="gallery-page" data-gallery-page="1">
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2052247916195324328?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2051815303416582292?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2037441448178794954?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2037163329916199121?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2051984954872279458?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2033137525217493364?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="2" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2048716181356634542?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2042861624374272501?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2059616499791540304?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2017950743932920036?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2036396770293587979?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2052540243770008029?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="3" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2040772758792216835?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2054496135713350094?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2042234038430392484?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2065791973336990059?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2021897619812102424?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2008876143991284028?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="4" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/1999728287304810694?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2035520051001151837?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2042907979054485680?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2048625608431972610?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2051602804159250440?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2028785874918654377?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="5" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2056173129689673921?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2006898050334392402?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2010196219675742700?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2060939938607296516?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2034553776762478657?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2030308399393775964?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="6" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2000091496004067487?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2007331004995060160?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2044029583247454664?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2042080808941580366?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2011767822750458190?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2032390361436590385?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="7" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2047794549284807161?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2039303145386655761?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2008876143991284028?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2011004084745363959?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2017132857224024315?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2022908467405828115?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="8" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2007808225744433612?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2030131943850004964?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2030969577056911729?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2037723804924035582?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2013551214852743625?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2027935303324074166?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="9" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2009942717724529134?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2014239930659361239?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2061029057773609099?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/1975137932290994262?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2026953487490367608?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2030133113188393129?s=20"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <div class="gallery-page" data-gallery-page="10" hidden>
+            <div class="gallery-grid">
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/1939650889167618330?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2032390361436590385?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/2041106943264412125?s=20"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/POST_ID_58"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/POST_ID_59"></a></blockquote></div></article>
+              <article class="post-card"><div class="post-embed"><blockquote class="twitter-tweet"><a href="https://x.com/riariaria_cos/status/POST_ID_60"></a></blockquote></div></article>
+            </div>
+          </div>
+
+          <nav class="gallery-pager" aria-label="Gallery pagination">
+            <button class="pager-current" type="button" data-gallery-button="1" aria-current="page">1</button>
+            <button class="pager-link" type="button" data-gallery-button="2">2</button>
+            <button class="pager-link" type="button" data-gallery-button="3">3</button>
+            <button class="pager-link" type="button" data-gallery-button="4">4</button>
+            <button class="pager-link" type="button" data-gallery-button="5">5</button>
+            <button class="pager-link" type="button" data-gallery-button="6">6</button>
+            <button class="pager-link" type="button" data-gallery-button="7">7</button>
+            <button class="pager-link" type="button" data-gallery-button="8">8</button>
+            <button class="pager-link" type="button" data-gallery-button="9">9</button>
+            <button class="pager-link" type="button" data-gallery-button="10">10</button>
+            <button class="pager-link" type="button" data-gallery-next>NEXT</button>
+          </nav>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container contact-grid">
+          <div>
+            <div class="section-title"><h2>CONTACT</h2></div>
+            <p class="lead">撮影依頼、イベント出演、PR案件など、お気軽にご連絡ください。</p>
+          </div>
+          <div class="contact-actions">
+            <a class="contact-action mail" href="mailto:riariaria.official@gmail.com">メールで問い合わせ</a>
+            <a class="contact-action dm" href="https://x.com/messages/compose?recipient_id=1758005064118251520" target="_blank" rel="noreferrer">XのDMで問い合わせ</a>
+          </div>
+          <div class="contact-card">
+            <div><strong>対応内容：</strong>撮影依頼 / イベント出演 / モデル / PR案件</div>
+            <div><strong>連絡先：</strong><a href="mailto:riariaria.official@gmail.com">riariaria.official@gmail.com</a></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div class="logo">RIA COS</div>
+        <p>© 2026 RIA COS. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>
+      const galleryPages = document.querySelectorAll("[data-gallery-page]");
+      const galleryButtons = document.querySelectorAll("[data-gallery-button]");
+      const nextButton = document.querySelector("[data-gallery-next]");
+      const totalGalleryPages = galleryPages.length;
+      let currentGalleryPage = 1;
+
+      function loadXEmbeds() {
+        if (window.twttr?.widgets) {
+          window.twttr.widgets.load();
+        }
+        window.setTimeout(equalizeGalleryCards, 700);
+        window.setTimeout(equalizeGalleryCards, 1500);
+      }
+
+      function equalizeGalleryCards() {
+        document.querySelectorAll("#gallery .post-card").forEach((card) => {
+          card.style.minHeight = "";
+        });
+      }
+
+      function showGalleryPage(page) {
+        currentGalleryPage = page;
+        const gallerySection = document.querySelector("#gallery");
+
+        galleryPages.forEach((galleryPage) => {
+          galleryPage.hidden = Number(galleryPage.dataset.galleryPage) !== page;
+        });
+
+        galleryButtons.forEach((button) => {
+          const isCurrent = Number(button.dataset.galleryButton) === page;
+          button.className = isCurrent ? "pager-current" : "pager-link";
+          button.toggleAttribute("aria-current", isCurrent);
+        });
+
+        nextButton.textContent = page === totalGalleryPages ? "BACK TO 1" : "NEXT";
+        if (gallerySection) {
+          const headerOffset = 84;
+          const galleryTop = gallerySection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: galleryTop, behavior: "smooth" });
+        }
+        window.setTimeout(loadXEmbeds, 50);
+      }
+
+      galleryButtons.forEach((button) => {
+        button.addEventListener("click", () => showGalleryPage(Number(button.dataset.galleryButton)));
+      });
+
+      nextButton.addEventListener("click", () => {
+        showGalleryPage(currentGalleryPage === totalGalleryPages ? 1 : currentGalleryPage + 1);
+      });
+
+      window.addEventListener("load", loadXEmbeds);
+      window.addEventListener("resize", equalizeGalleryCards);
+    </script>
+  </body>
+</html>
+
+
