@@ -1769,6 +1769,310 @@
           flex-basis: 96px !important;
         }
       }
+      /* ==============================
+   WORKS / BUSINESS PROFILE
+   ============================== */
+
+#works {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(244, 114, 182, 0.13), transparent 24%),
+    radial-gradient(circle at 88% 20%, rgba(167, 139, 250, 0.14), transparent 26%),
+    rgba(255, 255, 255, 0.72);
+}
+
+#works::before {
+  content: "WORKS";
+  position: absolute;
+  right: -8px;
+  top: 28px;
+  color: rgba(167, 139, 250, 0.055);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(90px, 15vw, 190px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.works-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.works-kicker {
+  color: var(--pink-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  margin: -14px 0 10px;
+  text-align: center;
+}
+
+.works-lead {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 2.05;
+  margin: 0 auto 34px;
+  max-width: 780px;
+  text-align: center;
+}
+
+.works-stats {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto 42px;
+  max-width: 900px;
+}
+
+.works-stat {
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 16px 36px rgba(124, 58, 237, 0.08);
+  padding: 24px 18px 22px;
+  text-align: center;
+}
+
+.works-stat strong {
+  display: block;
+  color: var(--violet);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 4vw, 46px);
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.works-stat span {
+  display: block;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  margin-top: 10px;
+}
+
+.works-updated {
+  color: var(--muted);
+  font-size: 11px;
+  margin: -28px auto 38px;
+  text-align: center;
+}
+
+.works-subtitle {
+  color: var(--violet);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  margin: 0 0 18px;
+  text-align: center;
+}
+
+.works-results {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 44px;
+}
+
+.works-result-card {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid rgba(244, 114, 182, 0.28);
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.97),
+    rgba(253, 242, 248, 0.78)
+  );
+  box-shadow: 0 18px 42px rgba(236, 72, 153, 0.1);
+  padding: 26px;
+}
+
+.works-result-card::after {
+  content: "✦";
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  color: rgba(244, 114, 182, 0.28);
+  font-size: 28px;
+}
+
+.works-result-label {
+  display: inline-block;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    rgba(244, 114, 182, 0.15),
+    rgba(167, 139, 250, 0.16)
+  );
+  color: var(--pink-dark);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+  padding: 7px 11px;
+}
+
+.works-result-card h3 {
+  color: #1e293b;
+  font-size: 19px;
+  margin: 0 0 12px;
+}
+
+.works-result-card p {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.works-strengths {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 44px;
+}
+
+.works-strength {
+  border-left: 3px solid rgba(244, 114, 182, 0.65);
+  border-radius: 0 16px 16px 0;
+  background: rgba(255, 255, 255, 0.74);
+  padding: 20px 22px;
+}
+
+.works-strength strong {
+  display: block;
+  color: var(--violet);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.works-strength p {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.works-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto 42px;
+  max-width: 920px;
+}
+
+.works-service {
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #475569;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  padding: 10px 15px;
+}
+
+.works-cta {
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.75), transparent 26%),
+    linear-gradient(135deg, rgba(253, 242, 248, 0.92), rgba(237, 233, 254, 0.84));
+  box-shadow: 0 20px 46px rgba(124, 58, 237, 0.1);
+  margin: 0 auto;
+  max-width: 920px;
+  padding: 30px 28px;
+  text-align: center;
+}
+
+.works-cta strong {
+  display: block;
+  color: #1e293b;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.works-cta p {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.9;
+  margin: 0 auto 18px;
+  max-width: 690px;
+}
+
+.works-contact-button {
+  align-items: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f472b6, #a78bfa);
+  box-shadow: 0 16px 30px rgba(236, 72, 153, 0.22);
+  color: #fff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  min-width: 250px;
+  padding: 14px 22px;
+}
+
+@media (max-width: 980px) {
+  .works-results,
+  .works-strengths {
+    grid-template-columns: 1fr;
+  }
+
+  .works-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  #works::before {
+    font-size: 86px;
+    top: 40px;
+  }
+
+  .works-lead {
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .works-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .works-stat {
+    padding: 20px 16px;
+  }
+
+  .works-updated {
+    margin-top: -26px;
+  }
+
+  .works-result-card {
+    min-height: 0;
+  }
+
+  .works-contact-button {
+    min-width: 0;
+    width: 100%;
+  }
+}
     </style>
   </head>
   <body>
@@ -1778,6 +2082,7 @@
         <nav class="nav">
           <a href="#home">HOME</a>
           <a href="#profile">PROFILE</a>
+          <a href="#works">WORKS</a>
           <a href="#sns">SNS</a>
           <a href="#support">SUPPORT</a>
           <a href="#funclub">FUNCLUB</a>
@@ -1810,10 +2115,10 @@
                 <h1>月城りあ</h1>
                 <span class="name-line" aria-hidden="true">○──────────────⊂◇⊃──────────────○</span>
               </div>
-              <p class="tagline">世界観を大切に</p>
+              <p class="tagline">かわいいだけじゃ、終わらない。</p>
               <p class="lead">
-                はじめまして、月城りあです。Vtuber、アニメ、ゲーム、フェチが大好きな童顔コスプレイヤーです。
-                ウィッグづくりから撮影まで心を込めて活動しています。
+                はじめまして、月城りあです。童顔を活かしたキャラクター再現と、関西弁を活かしたトークを強みに活動するコスプレイヤー。
+                Game / VTuber / Animeを中心に、撮影・イベント・動画・SNSなど幅広く活動しています。
               </p>
               <div class="hero-facts">
                 <span>活動歴 2年目</span>
@@ -1851,6 +2156,206 @@
           </div>
         </div>
       </section>
+
+      <!-- ==============================
+     WORKS / RESULTS
+     ============================== -->
+
+<section id="works">
+  <div class="container works-wrap">
+
+    <div class="section-title">
+      <h2>WORKS</h2>
+    </div>
+
+    <p class="works-kicker">WORKS / RESULTS</p>
+
+    <p class="works-lead">
+      Game / VTuber / Animeを中心に活動するコスプレイヤーとして、
+      撮影・イベント・SNS・動画など幅広く活動しています。<br />
+      童顔を活かしたキャラクター再現と、関西弁を活かした
+      親しみやすいトークを強みに、
+      企業案件・公式コスプレ・イベント出演等のご相談を承っております。
+    </p>
+
+    <!-- SNS -->
+    <div class="works-stats">
+
+      <div class="works-stat">
+        <strong>18K+</strong>
+        <span>X FOLLOWERS</span>
+      </div>
+
+      <div class="works-stat">
+        <strong>11K+</strong>
+        <span>INSTAGRAM FOLLOWERS</span>
+      </div>
+
+      <div class="works-stat">
+        <strong>7.8K+</strong>
+        <span>TIKTOK FOLLOWERS</span>
+      </div>
+
+    </div>
+
+    <p class="works-updated">
+      SNSフォロワー数：2026年8月時点
+    </p>
+
+
+    <!-- 実績 -->
+    <h3 class="works-subtitle">SELECTED RESULTS</h3>
+
+    <div class="works-results">
+
+      <article class="works-result-card">
+        <span class="works-result-label">EVENT / 2026</span>
+
+        <h3>COMIC MARKET C108</h3>
+
+        <p>
+          サークル出展。
+          コスプレ写真集・頒布物を展開し、当日分完売。
+          SNSでの事前告知から会場での販売まで、
+          自主制作・発信・販売を行いました。
+        </p>
+      </article>
+
+
+      <article class="works-result-card">
+        <span class="works-result-label">PHOTO SESSION</span>
+
+        <h3>撮影会出演</h3>
+
+        <p>
+          関西・関東を中心に撮影会へ出演。
+          多くの回で満枠となるなど、
+          継続的にファンの方に足を運んでいただいています。
+        </p>
+      </article>
+
+
+      <article class="works-result-card">
+        <span class="works-result-label">SOCIAL MEDIA</span>
+
+        <h3>SNS CONTENT</h3>
+
+        <p>
+          X・Instagram・TikTokを中心に
+          コスプレコンテンツを発信。
+          写真だけでなく、動画・トーク・配信を含めた
+          発信領域を拡大しています。
+        </p>
+      </article>
+
+    </div>
+
+
+    <!-- 強み -->
+    <h3 class="works-subtitle">STRENGTHS</h3>
+
+    <div class="works-strengths">
+
+      <div class="works-strength">
+        <strong>CHARACTER VISUAL</strong>
+
+        <p>
+          童顔と表情を活かし、
+          キャラクターらしさを大切にした
+          コスプレ表現・撮影に対応します。
+        </p>
+      </div>
+
+
+      <div class="works-strength">
+        <strong>COMMUNICATION</strong>
+
+        <p>
+          関西弁とトークを活かした親しみやすさが強み。
+          イベント・動画・配信など
+          会話を伴う出演にも対応します。
+        </p>
+      </div>
+
+
+      <div class="works-strength">
+        <strong>FAN ENGAGEMENT</strong>
+
+        <p>
+          撮影会の満枠やC108完売など、
+          SNS上の反応だけでなく
+          リアルイベントでの集客・販売実績があります。
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 対応可能 -->
+    <h3 class="works-subtitle">AVAILABLE FOR</h3>
+
+    <div class="works-services">
+
+      <span class="works-service">
+        公式コスプレイヤー
+      </span>
+
+      <span class="works-service">
+        ゲーム・アニメイベント出演
+      </span>
+
+      <span class="works-service">
+        ステージ・トーク出演
+      </span>
+
+      <span class="works-service">
+        SNS PR
+      </span>
+
+      <span class="works-service">
+        動画出演
+      </span>
+
+      <span class="works-service">
+        モデル・撮影
+      </span>
+
+      <span class="works-service">
+        ライブ配信
+      </span>
+
+      <span class="works-service">
+        各種コラボレーション
+      </span>
+
+    </div>
+
+
+    <!-- 問い合わせ -->
+    <div class="works-cta">
+
+      <strong>
+        企業案件・公式コスプレ・イベント出演等の
+        ご相談をお待ちしております。
+      </strong>
+
+      <p>
+        ご依頼内容・開催日・場所・拘束時間・掲載媒体・
+        ご予算など、分かる範囲でご記載ください。
+        内容を確認のうえご連絡いたします。
+      </p>
+
+      <a
+        class="works-contact-button"
+        href="#contact"
+      >
+        お仕事のご相談・お問い合わせ
+      </a>
+
+    </div>
+
+  </div>
+</section>
 
       <section class="band support-funclub-section">
         <div class="container">
